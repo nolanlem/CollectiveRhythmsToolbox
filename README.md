@@ -4,6 +4,9 @@
 ![crt-logo](https://user-images.githubusercontent.com/1406597/217825450-7ec7e180-1ccf-4fe1-bcf7-6b9250183a41.jpg)
 
 
+<img width="1300" alt="interface" src="https://user-images.githubusercontent.com/1406597/217840181-bf26a3b2-8121-49c1-9295-4aa0f92c0178.png">
+
+
 
 ## ABOUT
 The "Collective Rhythms Toolbox" is a flexible and responsive audio-visual interface for exploring the self-synchronizing behaviors of coupled systems. 
