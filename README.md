@@ -14,6 +14,13 @@ Similarly, several real-time analysis techniques provide the user with visual in
 As such, different extant techniques used in computer music and contemporary composition can be carried out by parameterizing the system in specific ways 
 which are explored from the perspective of dynamical systems based approaches.
 
+CRT is written in Processing and users need the OSCP5 and controlP5 libraries installed as dependencies. 
+
+## Audio Client
+
+The CoupledOscillator.pde and CoupledMetronomes.pde files send out OSC messages in the form of audio events. These must be handled by a separate music software environment in order to create sound. This repository comes with an example patch in SuperCollider (receive-oscs.scd) that recreates the basic metronome tick/tock sound with the attached woodblock sample. This was done so that users would have more control over the sound events that the dynamical systems generate and allows software more suitable for sound design to handle audio synthesis. 
+
+
 ## EXAMPLES
 ### Interface Demos
 The following videos show several different possibilities and dynamic states possible using the CoupledOscillator models. A user interacts with a separate control window to modify the model parameters in real time. A range of unusual audio-visual rhythmic states can be rendered.  
