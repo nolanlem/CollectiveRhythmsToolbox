@@ -1,5 +1,8 @@
 # Collective Rhythms Toolbox 
 
+![collective-rhythm-toolkit-logo](https://user-images.githubusercontent.com/1406597/217814030-147ce653-efd9-4ea6-8108-0ac50b06503d.jpg)
+
+
 ## ABOUT
 The "Collective Rhythms Toolbox" is a flexible and responsive audio-visual interface for exploring the self-synchronizing behaviors of coupled systems. 
 As a class of multi-agent system (MAS), The Collective Rhythms Toolbox works with networks of coupled oscillators and coupled-metronomes, allowing a user 
