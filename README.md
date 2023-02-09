@@ -14,6 +14,10 @@ The following videos show several different possibilities and dynamic states pos
 
 
 
+https://user-images.githubusercontent.com/1406597/217813764-df952f79-7f37-41fb-b522-85a3223bd8d9.mp4
+
+
+
 The following videos shows the audio-visual output of 100 coupled metronomes. Each metronomes imparts small moments of inertia onto a 'shared platform' and over time the metronomes begin to phase align and synchronize. 
 
 
