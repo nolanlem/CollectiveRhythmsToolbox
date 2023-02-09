@@ -93,8 +93,8 @@ public void setup() {
   .setRange(0, 1.0)
   .setValue(0.0)
   .setSize(15, 80)
-  .setColorValue(0xffff88ff)
-  .setColorCaptionLabel(0xffff88ff)
+  .setColorValue(color(100,0,0))
+  .setColorCaptionLabel(color(0,0,0))
   .setColorBackground(#404579)
   .setCaptionLabel("f_spread");
  
@@ -104,8 +104,8 @@ public void setup() {
   .setRange(0, 3)
   .setValue(0.0)
   .setSize(15, 80)
-  .setColorValue(0xffff88ff)
-  .setColorCaptionLabel(0xffff88ff)
+  .setColorValue(color(100,0,0))
+  .setColorCaptionLabel(color(0,0,0))
   .setColorBackground(#404579)
   .setCaptionLabel("freq_e");
 
@@ -121,8 +121,8 @@ public void setup() {
   .setRange(0, 0.2)
   .setValue(0.0)
   .setSize(15,80)
-  .setColorValue(0xffff88ff)
-  .setColorCaptionLabel(0xffff88ff)
+  .setColorValue(color(100,0,0))
+  .setColorCaptionLabel(color(0,0,0))
   .setCaptionLabel("cff");
  
   // intrinsic frequency slider 
@@ -131,8 +131,8 @@ public void setup() {
   .setRange(0, 5)
   .setValue(1) // init all on 1Hz
   .setSize(20, 100)
-  .setColorValue(0xffff88ff)
-  .setColorCaptionLabel(0xffff88ff)
+  .setColorValue(color(100,0,0))
+  .setColorCaptionLabel(color(0,0,0))
   .setColorBackground(#404579)
   .setCaptionLabel("freq_i");
   
@@ -142,10 +142,10 @@ public void setup() {
   .setRange(-0.02,0.1)
   .setValue(0.000)
   .setSize(20,100)
-  .setColorValue(color(240,0,0))
+  .setColorValue(color(100,0,0))
   .setColorForeground(color(240,200,200))
   .setColorLabel(0xE60000)
-  .setColorCaptionLabel(color(240,0,0))
+  .setColorCaptionLabel(color(0,0,0))
   .setCaptionLabel("kn");
   
       // 'kn' coupling slider
@@ -156,7 +156,7 @@ public void setup() {
   .setSize(20,100)
   .setColorForeground(color(240,200,200))
   .setColorLabel(0xE60000)
-  .setColorCaptionLabel(color(255,0,0))
+  .setColorCaptionLabel(color(0,0,0))
   .setCaptionLabel("R target");
   
     cp5.addButton("global_kn")
@@ -295,12 +295,12 @@ void controlEvent(ControlEvent theEvent){
    loadTxtFile("savedstates/here.txt");
   }
   
-  //if(theEvent.getController().getName() == "global_kn"){
-  //    println("toggling on all selectors");
-  //    for(int i = 0; i < N; i++){
-  //        cp5.get(Matrix.class, "knMatrix").set(i%10, floor(i/10), true);
-  //   }   
-  //}
+  if(theEvent.getController().getName() == "global_kn"){
+      println("toggling on all selectors");
+     for(int i = 0; i < N ; i++){
+       cp5.get(Button.class, "st_" + str(i)).setOn();
+     }
+  }
   
     if(theEvent.getController().getName() == "coupling"){
       float knval = cp5.get(Slider.class, "coupling").getValue();
@@ -326,6 +326,24 @@ void draw() {
     text("coupling: " + couplingType, 50, 450);
     // post |R| target flag
     textSize(14);
+    
+    textSize(10);
+    text("keystroke guide", 10, 30); 
+    textSize(9); 
+    text("'k' Kuramoto model", 5, 40); 
+    text("'p' Pulse Coupling", 5, 50); 
+    text("'=' add oscillator", 5, 60);
+    text("'-' remove oscillator", 5, 70);
+    text("'1' select all active ", 5, 80); 
+    text("'0' deselect all active ", 5, 90); 
+    text("'2' toggle |R| target", 5, 100); 
+    text("'f' toggle display mode", 5, 110);  
+    text("'a' burn in parameters to selected", 100, 30); 
+    
+    text("select oscillators in group", 100, 290); 
+    text("coupling strength indicator", 230, 290); 
+
+    
 
     // On/Off txt label for R_target flat
     if (fb_R_flag == true) {fill(0,240,0); text("ON", 450, 485);}
