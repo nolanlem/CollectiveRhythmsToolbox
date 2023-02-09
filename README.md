@@ -9,7 +9,7 @@
 
 
 ## ABOUT
-The "Collective Rhythms Toolbox" is a flexible and responsive audio-visual interface for exploring the self-synchronizing behaviors of coupled systems. 
+The "Collective Rhythms Toolbox" (CRT) is a flexible and responsive audio-visual interface for exploring the self-synchronizing behaviors of coupled systems. 
 As a class of multi-agent system (MAS), The Collective Rhythms Toolbox works with networks of coupled oscillators and coupled-metronomes, allowing a user 
 to explore different sonification routines that generate emergent rhythms by allowing for real-time parameter modulation. Using groups of coupling matrices, 
 complex coupling topologies allow for a variety of unusual rhythmic states to arise and audio-visual feedback encourages user flow and interactivity. 
