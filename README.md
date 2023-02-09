@@ -1,6 +1,7 @@
 # Collective Rhythms Toolbox 
 
-![collective-rhythm-toolkit-logo](https://user-images.githubusercontent.com/1406597/217814030-147ce653-efd9-4ea6-8108-0ac50b06503d.jpg)
+![crt-logo](https://user-images.githubusercontent.com/1406597/217814383-42e56112-8e68-46c0-884e-a5a157d07871.jpg)
+
 
 
 ## ABOUT
