@@ -8,3 +8,10 @@ Similarly, several real-time analysis techniques provide the user with visual in
 As such, different extant techniques used in computer music and contemporary composition can be carried out by parameterizing the system in specific ways 
 which are explored from the perspective of dynamical systems based approaches.
 
+
+
+
+https://user-images.githubusercontent.com/1406597/217811507-f635e668-0785-4fd7-ab4e-998aae70a9d2.mp4
+
+
+
