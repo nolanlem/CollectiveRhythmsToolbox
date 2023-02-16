@@ -8,6 +8,9 @@
 2. [Dependencies](#dependencies)
 3. [Audio Client](#audio-client) 
 4. [Examples](#examples)
+5. [About Coupled Oscillator Models](#generative-models)
+6. [Keystrokes Guide](#keystrokes)
+7. [UI Guide](*ui-guide)
 
 <img width="1300" alt="interface" src="https://user-images.githubusercontent.com/1406597/217840181-bf26a3b2-8121-49c1-9295-4aa0f92c0178.png">
 
@@ -44,7 +47,7 @@ The following videos shows the audio-visual output of 100 coupled metronomes usi
 
 The first two terms represent the typical pendulum angular acceleration and the gravitational torque respectively. The third term models the mechanism for escapement ($\epsilon_i$) and dampening ($D$) as a function of pendulum angle. Lastly, the fourth term accounts for the coupling of the table where $x$ is the horizontal motion of the table in the direction of the pendulums’ motion. Modifying these parameters changes the way in which the pendulums synchronize with one another or fail to do so entirely for example if the tempos of the pendulum (a determined by their length, r) are too far apart or if the mass of the table is too large. Synchronization time is proportional with natural tempo spread: metronomes take longer to phase align when their natural tempos are different. Similarly, if the dampening factor is too large, the escapement mechanism fails to induce the metronomes into periodic motion. 
 
-## About Coupled Oscillator Models 
+## About Coupled Oscillator Models<a name="generative-models"></a>
 ### Kuramoto Model: Generalized Continuous Coupling 
 
 Kuramoto oscillators are a type of limit-cycle oscillator with natural frequencies, $\omega_i$, and a coupling coefficient, $k_i$ that continually adjusts their phases according to a sinusoidal phase response curve. The natural frequencies are typically drawn from a normal distribution and since coupling is applied at all times, synchrony can result if coupling surpasses a critical coupling value. The governing equation for a group of $N$ Kuramoto oscillators is shown in the equation below.
@@ -76,7 +79,7 @@ https://user-images.githubusercontent.com/1406597/217811507-f635e668-0785-4fd7-a
 https://user-images.githubusercontent.com/1406597/217825100-1dd00080-81e4-4adc-a72d-358ceaec49ef.mov
 
 
-# Tutorial 
+# Basic Tutorial <a name="tutorial"></a>
 
 1. Run the SuperCollider script receive-oscs.scd (NB: you need to boot the server!! (CMD+B). Run the script by placing the cursor inside the code block and press CMD+ENTER) 
 
@@ -98,7 +101,7 @@ https://user-images.githubusercontent.com/1406597/217825100-1dd00080-81e4-4adc-a
 
 More unusual quasi-periodic/synchronous states arise when you allow individual or groups of oscillators to take on different coupling strengths and natural frequencies. This can be done by just selecting groups of active oscillators from the selector matrix, modifying the coupling strength and natural frequency independently of the others. A number of interesting mode-locking, chimeric, or polyrhythmic states are possible. 
 
-# Keystrokes Guide
+# Keystrokes Guide <a name="keystrokes"></a>
 CRT comes with built-in keystrokes so that users can interact with the parameters more quickly from their keyboards. 
 
 'f' = toggle display mode (grid view or circle map view)
@@ -111,19 +114,20 @@ CRT comes with built-in keystrokes so that users can interact with the parameter
 '2' = turn on 'R Feedback' to Force System into Desired Phase Coherence 
 'a' = Set in current parameter states to selected oscillators 
 
-# UI Guide 
-'KN' - adjusts the coupling for the oscillators currently selected (in green) in the selection matrix. 
-'FREQ_I' - adjusts the natural frequency for the oscillators currently selected in the selection matrix 
-'FREQ_E' - adjusts the frequency of the external force applied to the oscillators selected in the selection matrix 
-'CFF' - adjusts the strength of the extenal force applied to the oscillators selected in the selection matrix
-'F_SPREAD' - adjusts the variance of natural frequencies that are applied to all of the oscillators
-'R TARGET' - adjusts the 'target phase coherence (|R|)' when 'R Feedback' ('2') is applied 
-
-'RANDOM' - randomizes all the instantaneous phases of the oscillators 
-'GLOBAL' - selects all of the active oscillators in the selection matrix 
-
-'LOADER' - loads the saved states of the system parameters onto the generative model  
-'WRITER' - saves the current system parameters to a time-stamped text file in './saved-states'
+# UI Guide <a name="ui-guide"></a>
+### Sliders
+* 'KN' - adjusts the coupling for the oscillators currently selected (in green) in the selection matrix. 
+* 'FREQ_I' - adjusts the natural frequency for the oscillators currently selected in the selection matrix 
+* 'FREQ_E' - adjusts the frequency of the external force applied to the oscillators selected in the selection matrix 
+* 'CFF' - adjusts the strength of the extenal force applied to the oscillators selected in the selection matrix
+* 'F_SPREAD' - adjusts the variance of natural frequencies that are applied to all of the oscillators
+* 'R TARGET' - adjusts the 'target phase coherence (|R|)' when 'R Feedback' ('2') is applied 
+### Buttons
+* 'RANDOM' - randomizes all the instantaneous phases of the oscillators 
+* 'GLOBAL' - selects all of the active oscillators in the selection matrix 
+### I/O
+* 'LOADER' - loads the saved states of the system parameters onto the generative model  
+* 'WRITER' - saves the current system parameters to a time-stamped text file in './saved-states'
 
 
 
