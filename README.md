@@ -3,12 +3,17 @@
 
 ![crt-logo](https://user-images.githubusercontent.com/1406597/217825450-7ec7e180-1ccf-4fe1-bcf7-6b9250183a41.jpg)
 
+# Table of Contents 
+1. [About](#about)
+2. [Dependencies](#dependencies)
+3. [Audio Client](#audio-client) 
+4. [Examples](#examples)
 
 <img width="1300" alt="interface" src="https://user-images.githubusercontent.com/1406597/217840181-bf26a3b2-8121-49c1-9295-4aa0f92c0178.png">
 
 
 
-## About
+## About <a name ="about"></a>
 The "Collective Rhythms Toolbox" (CRT) is a flexible and responsive audio-visual interface for exploring the self-synchronizing behaviors of coupled systems. 
 As a class of multi-agent system (MAS), CRT works with networks of coupled oscillators and coupled-metronomes, allowing a user 
 to explore different sonification routines that generate emergent rhythms by allowing for real-time parameter modulation. Using groups of coupling matrices, complex coupling topologies allow for a variety of unusual rhythmic states to arise and audio-visual feedback encourages user flow and interactivity. 
@@ -16,16 +21,16 @@ Similarly, several real-time analysis techniques provide the user with visual in
 As such, different extant techniques used in computer music and contemporary composition can be carried out by parameterizing the system in specific ways 
 which are explored from the perspective of dynamical systems based approaches.
 
-## Dependencies
+## Dependencies <a name ="dependencies"></a>
 CRT is written in [Processing](https://processing.org) and requires the [OSCP5](https://sojamo.de/libraries/oscP5/) and [controlP5](https://sojamo.de/libraries/controlP5/) external libraries. 
 
 
-## Audio Client
+### Audio Client <a name ="audio-client"></a>
 
 The CoupledOscillator.pde and CoupledMetronomes.pde scripts send out OSC messages in the form of audio events. These must be handled by a separate audio client (SuperCollider, Max/MSP, Ableton, etc.) in order to create sound. This repository comes with an example patch in SuperCollider (receive-oscs.scd) that recreates the basic metronome tick/tock sound with the attached woodblock sample. This was done so that users would have more control over the sound events that the dynamical systems generate and allows software more suitable for sound design to handle audio synthesis. 
 
 
-## EXAMPLES
+## EXAMPLES <a name="examples"></a>
 ### Interface Demos
 The following videos show several different possibilities and dynamic states possible using the CoupledOscillator models. A user interacts with a separate control window to modify the model parameters in real time. A range of unusual audio-visual rhythmic states can be rendered.  
 
@@ -59,7 +64,7 @@ $$ \dot{\phi_i} = \omega_i + \Lambda_e(\phi_i) + K_i(R) sin(\psi - \phi_i) $$
 
 ### Pulse Coupling 
 
-Kuramoto coupling is a specific instance of continuous coupling: oscillators are sharing phase information with each other continuously and making adjustments accordingly. In a pulse-coupling configuration, each oscillator triggers the other oscillators to make phase adjustments every time it completes one cycle (upon each zero crossing). Due to this fundamental difference in how coupling is carried out, pulse coupled oscillators contain different dynamics than those of Kuramoto oscillators and have more real-world validity to describe systems of fireflies \cite{Hartbauer2016}, animal chorusing [[2]](#2) as well as modeling the dynamics of spiking neuronal populations [[3]](#3). A mathematical description of pulse coupled oscillators is beyond the scope of this paper but has been examined in more depth at in my other [research](https://www.nolanlem.com/pdfs/smc_2022-current.pdf).
+Kuramoto coupling is a specific instance of continuous coupling: oscillators are sharing phase information with each other continuously and making adjustments accordingly. In a pulse-coupling configuration, each oscillator triggers the other oscillators to make phase adjustments every time it completes one cycle (upon each zero crossing). Due to this fundamental difference in how coupling is carried out, pulse coupled oscillators contain different dynamics than those of Kuramoto oscillators and have more real-world validity to describe systems of fireflies [[2]](#2), animal chorusing [[3]](#3) as well as modeling the dynamics of spiking neuronal populations [[4]](#4). A mathematical description of pulse coupled oscillators is beyond the scope of this paper but has been examined in more depth at in my other [research](https://www.nolanlem.com/pdfs/smc_2022-current.pdf).
 
 
 
@@ -100,13 +105,18 @@ Pantaleone, James (Oct. 2002).
 “Synchronization of metronomes”.
 American Journal of Physics 70.10, pp. 992–1000. issn: 0002-9505. doi: 10.1119/1.1501118. url: http://aapt.scitation. org/doi/10.1119/1.1501118.
 
-<a id="2">[2]</a> 
+<a id="2">[2]</a>
+Hartbauer, Manfred and Heiner Römer (2016). 
+“Rhythm generation and rhythm perception in insects: The evolution of synchronous choruses”.
+Frontiers in Neuroscience 10.MAY, pp. 1–15. issn: 1662453X. doi: 10.3389/fnins.2016.00223.
+
+<a id="3">[3]</a> 
 Ravignani, Andrea, Dan Bowling, and W. Tecumseh Fitch (2014). 
 “Chorusing, synchrony and the evolutionary functions of rhythm”. 
 Frontiers in Psychology 5.SEP, pp. 1–15. issn: 16641078. doi: 10.3389/fpsyg.2014.01118.
 
 
-<a id="3">[3]</a>
+<a id="4">[4]</a>
 Peskin, C.S. (1975). 
 Mathematical Aspects of Heart Physiology. 
 New York: New York University, pp. 268–278.
