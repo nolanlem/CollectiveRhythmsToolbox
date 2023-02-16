@@ -32,10 +32,33 @@ https://user-images.githubusercontent.com/1406597/217813764-df952f79-7f37-41fb-b
 
 
 ### Simulation of Coupled Metronomes Demo 
-The following videos shows the audio-visual output of 100 coupled metronomes using a physical model defined by Pantaleone (2002) ("Synchronization of metronomes" doi: 10.1119/1.1501118). Each metronomes imparts small moments of inertia onto a 'shared platform' and over time the metronomes begin to phase align and synchronize. This is shown in the following equation of motion:  
+The following videos shows the audio-visual output of 100 coupled metronomes using a physical model defined by Pantaleone (2002) ("Synchronization of metronomes" doi: 10.1119/1.1501118) [[1]](#1). Each metronomes imparts small moments of inertia onto a 'shared platform' and over time the metronomes begin to phase align and synchronize. This is shown in the following equation of motion:  
 <img width="569" alt="coupled-metronome-equations" src="https://user-images.githubusercontent.com/1406597/217867665-1d39b6ea-7252-4463-a53c-167aa67068fb.png">
 
-The first two terms represent the typical pendulum angular acceleration and the gravitational torque respectively. The third term models the mechanism for escapement ($\epsilon_i$) and dampening ($\D$) as a function of pendulum angle. Lastly, the fourth term accounts for the coupling of the table where $\x$ is the horizontal motion of the table in the direction of the pendulums’ motion. Modifying these parameters changes the way in which the pendulums synchronize with one another or fail to do so entirely for example if the tempos of the pendulum (a determined by their length, r) are too far apart or if the mass of the table is too large. Synchronization time is proportional with natural tempo spread: metronomes take longer to phase align when their natural tempos are different. Similarly, if the dampening factor is too large, the escapement mechanism fails to induce the metronomes into periodic motion. 
+The first two terms represent the typical pendulum angular acceleration and the gravitational torque respectively. The third term models the mechanism for escapement ($\epsilon_i$) and dampening ($D$) as a function of pendulum angle. Lastly, the fourth term accounts for the coupling of the table where $x$ is the horizontal motion of the table in the direction of the pendulums’ motion. Modifying these parameters changes the way in which the pendulums synchronize with one another or fail to do so entirely for example if the tempos of the pendulum (a determined by their length, r) are too far apart or if the mass of the table is too large. Synchronization time is proportional with natural tempo spread: metronomes take longer to phase align when their natural tempos are different. Similarly, if the dampening factor is too large, the escapement mechanism fails to induce the metronomes into periodic motion. 
+
+## About Coupled Oscillator Models 
+### Kuramoto Model: Generalized Continuous Coupling 
+
+Kuramoto oscillators are a type of limit-cycle oscillators with natural frequencies, $\omega_i$, and a coupling coefficient, $k_i$ that continually adjusts their phases according to a sinusoidal phase response curve. The natural frequencies are typically drawn from different statistical distributions and since coupling is applied at all times, synchrony can result if coupling surpasses a critical coupling value. The governing equation for a group of $N$ Kuramoto oscillators is shown in the equation below.
+
+$$\dot{\phi_i} = \omega_i + \frac{K_i}{N} \sum_{j!=i}^{N} sin(\phi_j - \phi_i)$$
+
+### Phase Coherence, Order Parameters
+What sort of metrics can indicate the level of global synchrony in the system? For any collection of instantaneous phase states $phi_N$, we can look at a summary statistic known as the “phase coherence” that provides a useful indication of the group’s synchrony. This is shown in the equation below.
+
+$$ Re^{j\psi} = \frac{1}{N} \sum_{i=1}^{N} e^{j\phi_i} $$
+
+$R$ is the phase coherence magnitude and $psi$ is what is known as the average angle. Mapping each phase state of the oscillators above onto a circle (0-2$\Pi$), we can derive an expression that relates the relative spread or dispersion of the swarm of phases of each oscillator to an R value between 0 and 1 and an average angle, $\psi$. This measure of phase coherence will become useful to describe the dynamics associated with the continuous coupling model. Moreover, this statistic can be meaningfully applied as a proxy for perceptual rhythmic entrainment which has been looked at in my other [research](https://www.academia.edu/49240274/Extracting_beat_from_a_crowd_of_coupled_metronomes_Effects_of_coupling_strength_and_timbre_on_tapping_synchronization).
+
+We can use the mean-field of the phase coherence to rewrite the governing equation for the Kuramoto model in terms of the $|R|$ and $psi$ as shown below. 
+
+$$ \dot{\phi_i} = \omega_i + \Lambda_e(\phi_i) + K_i(R) sin(\psi - \phi_i) $$
+
+### Pulse Coupling 
+
+Kuramoto coupling is a specific instance of continuous coupling: oscillators are sharing phase information with each other continuously and making adjustments accordingly. In a pulse-coupling configuration, each oscillator triggers the other oscillators to make phase adjustments every time it completes one cycle (upon each zero crossing). Due to this fundamental difference in how coupling is carried out, pulse coupled oscillators contain different dynamics than those of Kuramoto oscillators and have more real-world validity to describe systems of fireflies \cite{Hartbauer2016}, animal chorusing [[2]](#2) as well as modeling the dynamics of spiking neuronal populations [[3]](#3). A mathematical description of pulse coupled oscillators is beyond the scope of this paper but has been examined in more depth at in my other [research](https://www.nolanlem.com/pdfs/smc_2022-current.pdf).
+
 
 
 https://user-images.githubusercontent.com/1406597/217811507-f635e668-0785-4fd7-ab4e-998aae70a9d2.mp4
@@ -66,7 +89,25 @@ https://user-images.githubusercontent.com/1406597/217825100-1dd00080-81e4-4adc-a
 
 9. Press '0' to deselect all of the active oscillators (or manually deselect them in the selection matrix). 
 
-More unusual quasi-periodic/synchronous states arise when you allow individual or groups of oscillators to take on different coupling strengths and natural frequencies. This can be done by just selecting groups of active oscillators from the selector matrix, modifying the coupling strength and natural frequency independently of the others. A number of interesting mode-locking, chimeric, or polyrhythmic states are possible.   
+More unusual quasi-periodic/synchronous states arise when you allow individual or groups of oscillators to take on different coupling strengths and natural frequencies. This can be done by just selecting groups of active oscillators from the selector matrix, modifying the coupling strength and natural frequency independently of the others. A number of interesting mode-locking, chimeric, or polyrhythmic states are possible. 
+
+
+## References
+<a id="1">[1]</a> 
+Pantaleone, James (Oct. 2002). 
+“Synchronization of metronomes”.
+American Journal of Physics 70.10, pp. 992–1000. issn: 0002-9505. doi: 10.1119/1.1501118. url: http://aapt.scitation. org/doi/10.1119/1.1501118.
+
+<a id="2">[2]</a> 
+Ravignani, Andrea, Dan Bowling, and W. Tecumseh Fitch (2014). 
+“Chorusing, synchrony and the evolutionary functions of rhythm”. 
+Frontiers in Psychology 5.SEP, pp. 1–15. issn: 16641078. doi: 10.3389/fpsyg.2014.01118.
+
+
+<a id="3">[3]</a>
+Peskin, C.S. (1975). 
+Mathematical Aspects of Heart Physiology. 
+New York: New York University, pp. 268–278.
 
 
 
