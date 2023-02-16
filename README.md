@@ -98,6 +98,34 @@ https://user-images.githubusercontent.com/1406597/217825100-1dd00080-81e4-4adc-a
 
 More unusual quasi-periodic/synchronous states arise when you allow individual or groups of oscillators to take on different coupling strengths and natural frequencies. This can be done by just selecting groups of active oscillators from the selector matrix, modifying the coupling strength and natural frequency independently of the others. A number of interesting mode-locking, chimeric, or polyrhythmic states are possible. 
 
+# Keystrokes Guide
+CRT comes with built-in keystrokes so that users can interact with the parameters more quickly from their keyboards. 
+
+'f' = toggle display mode (grid view or circle map view)
+'=' = add oscillator to group
+'-' = remove oscillator from group
+'k' = apply Kuramoto Model Coupling 
+'p' = apply Pulse Coupling 
+'1' = select all active oscillators 
+'0' = deselect all active oscillators 
+'2' = turn on 'R Feedback' to Force System into Desired Phase Coherence 
+'a' = Set in current parameter states to selected oscillators 
+
+# UI Guide 
+'KN' - adjusts the coupling for the oscillators currently selected (in green) in the selection matrix. 
+'FREQ_I' - adjusts the natural frequency for the oscillators currently selected in the selection matrix 
+'FREQ_E' - adjusts the frequency of the external force applied to the oscillators selected in the selection matrix 
+'CFF' - adjusts the strength of the extenal force applied to the oscillators selected in the selection matrix
+'F_SPREAD' - adjusts the variance of natural frequencies that are applied to all of the oscillators
+'R TARGET' - adjusts the 'target phase coherence (|R|)' when 'R Feedback' ('2') is applied 
+
+'RANDOM' - randomizes all the instantaneous phases of the oscillators 
+'GLOBAL' - selects all of the active oscillators in the selection matrix 
+
+'LOADER' - loads the saved states of the system parameters onto the generative model  
+'WRITER' - saves the current system parameters to a time-stamped text file in './saved-states'
+
+
 
 ## References
 <a id="1">[1]</a> 
