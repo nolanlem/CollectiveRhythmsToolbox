@@ -48,6 +48,13 @@ The following videos shows the audio-visual output of 100 coupled metronomes usi
 The first two terms represent the typical pendulum angular acceleration and the gravitational torque respectively. The third term models the mechanism for escapement ($\epsilon_i$) and dampening ($D$) as a function of pendulum angle. Lastly, the fourth term accounts for the coupling of the table where $x$ is the horizontal motion of the table in the direction of the pendulums’ motion. Modifying these parameters changes the way in which the pendulums synchronize with one another or fail to do so entirely for example if the tempos of the pendulum (a determined by their length, r) are too far apart or if the mass of the table is too large. Synchronization time is proportional with natural tempo spread: metronomes take longer to phase align when their natural tempos are different. Similarly, if the dampening factor is too large, the escapement mechanism fails to induce the metronomes into periodic motion. 
 
 ## About Coupled Oscillator Models<a name="generative-models"></a>
+
+![circle-map-w-R](https://user-images.githubusercontent.com/1406597/219391731-2cb3aebc-c65d-433c-b794-1170048185e1.png)
+
+Each oscillator in the group is treated as a point in a 'swarm' that moves about a circle at a natural frequency ($\omega at angle $\phi$). Auditory onsets are triggered at each zero-crossing. The phase coherence (see below) magnitude, |R|, and average angle, $\psi$, are summary statistics that provide a global view of the synchrony of the group at large.
+
+
+
 ### Kuramoto Model: Generalized Continuous Coupling 
 
 Kuramoto oscillators are a type of limit-cycle oscillator with natural frequencies, $\omega_i$, and a coupling coefficient, $k_i$ that continually adjusts their phases according to a sinusoidal phase response curve. The natural frequencies are typically drawn from a normal distribution and since coupling is applied at all times, synchrony can result if coupling surpasses a critical coupling value. The governing equation for a group of $N$ Kuramoto oscillators is shown in the equation below.
