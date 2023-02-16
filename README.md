@@ -8,7 +8,7 @@
 
 
 
-## ABOUT
+## About
 The "Collective Rhythms Toolbox" (CRT) is a flexible and responsive audio-visual interface for exploring the self-synchronizing behaviors of coupled systems. 
 As a class of multi-agent system (MAS), CRT works with networks of coupled oscillators and coupled-metronomes, allowing a user 
 to explore different sonification routines that generate emergent rhythms by allowing for real-time parameter modulation. Using groups of coupling matrices, complex coupling topologies allow for a variety of unusual rhythmic states to arise and audio-visual feedback encourages user flow and interactivity. 
@@ -16,7 +16,9 @@ Similarly, several real-time analysis techniques provide the user with visual in
 As such, different extant techniques used in computer music and contemporary composition can be carried out by parameterizing the system in specific ways 
 which are explored from the perspective of dynamical systems based approaches.
 
-CRT is written in Processing and users need the OSCP5 and controlP5 libraries installed as dependencies. 
+## Dependencies
+CRT is written in [Processing](https://processing.org) and requires the [OSCP5](https://sojamo.de/libraries/oscP5/) and [controlP5](https://sojamo.de/libraries/controlP5/) external libraries. 
+
 
 ## Audio Client
 
@@ -40,7 +42,7 @@ The first two terms represent the typical pendulum angular acceleration and the 
 ## About Coupled Oscillator Models 
 ### Kuramoto Model: Generalized Continuous Coupling 
 
-Kuramoto oscillators are a type of limit-cycle oscillators with natural frequencies, $\omega_i$, and a coupling coefficient, $k_i$ that continually adjusts their phases according to a sinusoidal phase response curve. The natural frequencies are typically drawn from different statistical distributions and since coupling is applied at all times, synchrony can result if coupling surpasses a critical coupling value. The governing equation for a group of $N$ Kuramoto oscillators is shown in the equation below.
+Kuramoto oscillators are a type of limit-cycle oscillator with natural frequencies, $\omega_i$, and a coupling coefficient, $k_i$ that continually adjusts their phases according to a sinusoidal phase response curve. The natural frequencies are typically drawn from a normal distribution and since coupling is applied at all times, synchrony can result if coupling surpasses a critical coupling value. The governing equation for a group of $N$ Kuramoto oscillators is shown in the equation below.
 
 $$\dot{\phi_i} = \omega_i + \frac{K_i}{N} \sum_{j!=i}^{N} sin(\phi_j - \phi_i)$$
 
