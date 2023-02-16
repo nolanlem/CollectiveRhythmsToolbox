@@ -10,7 +10,7 @@
 4. [Examples](#examples)
 5. [About Coupled Oscillator Models](#generative-models)
 6. [Keystrokes Guide](#keystrokes)
-7. [UI Guide](*ui-guide)
+7. [UI Guide](#ui-guide)
 
 <img width="1300" alt="interface" src="https://user-images.githubusercontent.com/1406597/217840181-bf26a3b2-8121-49c1-9295-4aa0f92c0178.png">
 
