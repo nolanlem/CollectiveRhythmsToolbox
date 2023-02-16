@@ -47,7 +47,7 @@ Kuramoto oscillators are a type of limit-cycle oscillator with natural frequenci
 $$\dot{\phi_i} = \omega_i + \frac{K_i}{N} \sum_{j!=i}^{N} sin(\phi_j - \phi_i)$$
 
 ### Phase Coherence, Order Parameters
-What sort of metrics can indicate the level of global synchrony in the system? For any collection of instantaneous phase states $phi_N$, we can look at a summary statistic known as the “phase coherence” that provides a useful indication of the group’s synchrony. This is shown in the equation below.
+What sort of metrics can indicate the level of global synchrony in the system? For any collection of instantaneous phase states $\phi_N$, we can look at a summary statistic known as the “phase coherence” that provides a useful indication of the group’s synchrony. This is shown in the equation below.
 
 $$ Re^{j\psi} = \frac{1}{N} \sum_{i=1}^{N} e^{j\phi_i} $$
 
