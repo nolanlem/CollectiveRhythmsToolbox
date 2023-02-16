@@ -51,9 +51,9 @@ What sort of metrics can indicate the level of global synchrony in the system? F
 
 $$ Re^{j\psi} = \frac{1}{N} \sum_{i=1}^{N} e^{j\phi_i} $$
 
-$R$ is the phase coherence magnitude and $psi$ is what is known as the average angle. Mapping each phase state of the oscillators above onto a circle (0-2$\Pi$), we can derive an expression that relates the relative spread or dispersion of the swarm of phases of each oscillator to an R value between 0 and 1 and an average angle, $\psi$. This measure of phase coherence will become useful to describe the dynamics associated with the continuous coupling model. Moreover, this statistic can be meaningfully applied as a proxy for perceptual rhythmic entrainment which has been looked at in my other [research](https://www.academia.edu/49240274/Extracting_beat_from_a_crowd_of_coupled_metronomes_Effects_of_coupling_strength_and_timbre_on_tapping_synchronization).
+$R$ is the phase coherence magnitude and $\psi$ is what is known as the average angle. Mapping each phase state of the oscillators above onto a circle (0-2$\Pi$), we can derive an expression that relates the relative spread or dispersion of the swarm of phases of each oscillator to an R value between 0 and 1 and an average angle, $\psi$. This measure of phase coherence will become useful to describe the dynamics associated with the continuous coupling model. Moreover, this statistic can be meaningfully applied as a proxy for perceptual rhythmic entrainment which has been looked at in my other [research](https://www.academia.edu/49240274/Extracting_beat_from_a_crowd_of_coupled_metronomes_Effects_of_coupling_strength_and_timbre_on_tapping_synchronization).
 
-We can use the mean-field of the phase coherence to rewrite the governing equation for the Kuramoto model in terms of the $|R|$ and $psi$ as shown below. 
+We can use the mean-field of the phase coherence to rewrite the governing equation for the Kuramoto model in terms of the $|R|$ and $\psi$ as shown below. 
 
 $$ \dot{\phi_i} = \omega_i + \Lambda_e(\phi_i) + K_i(R) sin(\psi - \phi_i) $$
 
