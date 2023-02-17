@@ -111,15 +111,15 @@ More unusual quasi-periodic/synchronous states arise when you allow individual o
 # Keystrokes Guide <a name="keystrokes"></a>
 CRT comes with built-in keystrokes so that users can interact with the parameters more quickly from their keyboards. 
 
-'f' = toggle display mode (grid view or circle map view)
-'=' = add oscillator to group
-'-' = remove oscillator from group
-'k' = apply Kuramoto Model Coupling 
-'p' = apply Pulse Coupling 
-'1' = select all active oscillators 
-'0' = deselect all active oscillators 
-'2' = turn on 'R Feedback' to Force System into Desired Phase Coherence 
-'a' = Set in current parameter states to selected oscillators 
+* 'f' = toggle display mode (grid view or circle map view)
+* '=' = add oscillator to group
+* '-' = remove oscillator from group
+* 'k' = apply Kuramoto Model Coupling 
+* 'p' = apply Pulse Coupling 
+* '1' = select all active oscillators 
+* '0' = deselect all active oscillators 
+* '2' = turn on 'R Feedback' to Force System into Desired Phase Coherence 
+* 'a' = Set in current parameter states to selected oscillators 
 
 # UI Guide <a name="ui-guide"></a>
 ### Sliders
