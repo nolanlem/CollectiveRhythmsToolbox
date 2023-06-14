@@ -15,14 +15,15 @@ class Pendulum  {
   int state;
   float L; 
   float movingrefx; // x-dir motion of the driven and coupled forces acting on/thru the table
+  float kn; 
  // OscMessage myMessage; 
  
-  Pendulum(PVector origin_, float r_, int idx_) {
+  Pendulum(PVector origin_, float r_, float ang, int idx_) {
     origin = origin_.get(); // location of bob
     location = new PVector(); // location of arm origin 
     r = r_;                  // length of arm
-    angle = random(-PI/4, PI/4); // initial pendulum arm angle
-    angle_ = angle;
+    //angle = random(0, PI/2); // initial pendulum arm angle
+    angle = ang;                // init pendulum angle 
     aVelocity = 0.0;            // angle velocity
     aAcceleration = 0.0;        //angle acceleration 
     bob = 5.0;

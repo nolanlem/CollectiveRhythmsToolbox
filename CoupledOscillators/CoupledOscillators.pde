@@ -237,9 +237,10 @@ void settings(){
 }
 
 void setup(){
- //int d = day(); int mon = month(); int y = year(); int s = second();int min = minute(); int h = hour();
- //String thetime = str(d) + "_" + str(mon) + "_" + str(y) + "-" + str(h) + ":" + str(min) + ":" + str(s) + ".txt";
- thefilename = "savedstates/" + "thestate.txt" ;
+ int d_ = day(); int mon_ = month(); int y_ = year(); int s_ = second();int min_ = minute(); int h_ = hour();
+ String thetime = str(d_) + "_" + str(mon_) + "_" + str(y_) + "-" + str(h_) + ":" + str(min_) + ":" + str(s_) + ".txt";
+ //thefilename = "./savedstates/" + "thestate.txt" ;
+ thefilename = "./savedstates/" + thetime; 
  output = createWriter(thefilename); // object to write to file with 
 
  makeControls(); // controlP5 stuff in tab 

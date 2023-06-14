@@ -8,6 +8,7 @@ String filename = "";
 ControlFrame cf;
 
 int N = 3; // initial number of metronomes in ensemble 
+int maxN = 100; 
 int maxmetros = 100; // max number of metronomes 
 int curr_i = N;
 
@@ -28,6 +29,11 @@ float kn = 0.5;
 
 // grid indications for metronome position on screen 
 int maxrow = 10, maxcol = 10; 
+
+// to save states matrices
+int[] states = new int[maxN]; // hold matrix of buttons to indicate active states
+float[] kn_states = new float[maxN]; 
+
 
 
 
@@ -81,7 +87,11 @@ void setup() {
  
 //We make a new Pendulum object with an origin location and arm length.
   for(int i = 0; i < N; i++){
-      p.add(new Pendulum(new PVector(x + (i%grid)*(init_L+off), y + (floor(i/grid))*(init_L+off)), init_L, i));  
+      float randomangleL = random(-PI/2, -PI/4); 
+      float randomangleR = random(PI/4, PI/2);
+      float[] randomangarr = {randomangleL, randomangleR}; 
+      int randint = int(random(0,2));
+      p.add(new Pendulum(new PVector(x + (i%grid)*(init_L+off), y + (floor(i/grid))*(init_L+off)), init_L, randomangarr[randint], i));  
       ls[i] = init_L;
   }
 }
@@ -108,6 +118,7 @@ void draw() {
     myMessage.add(p.get(i).state);
   }
   oscP5.send(myMessage, myRemoteLocation);
+  
    
 }
 

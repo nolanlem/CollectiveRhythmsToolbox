@@ -154,6 +154,7 @@ public void setup() {
   .setRange(0,1.0)
   .setValue(0.000)
   .setSize(20,100)
+  .setColorValue(color(0,0,0))
   .setColorForeground(color(240,200,200))
   .setColorLabel(0xE60000)
   .setColorCaptionLabel(color(0,0,0))
@@ -183,34 +184,44 @@ public void setup() {
       ButtonBar bar = (ButtonBar)ev.getController();
       //println("hello ", bar.hover());
       String filename = "";
-      if(bar.hover()== 0){
+      if(bar.hover() == 0){
         println("state 1");
-         filename = "./savedstates/here.txt";
+         //filename = "savedstates/1.txt";
+         filename = "/Users/nolanlem/Documents/kura/CollectiveRhythmsToolbox/CoupledOscillators/savedstates/1.txt";
       }
-      if(bar.hover()== 1){
-        println("state 2");
-         filename = "savedstates/2.txt";
+      if(bar.hover() == 1){
+        println("loading state 2");
+         //filename = "savedstates/1.txt";
+         filename = "/Users/nolanlem/Documents/kura/CollectiveRhythmsToolbox/CoupledOscillators/savedstates/2.txt";
       }
       if(bar.hover()== 2){
-        println("state 3");
-         filename = "savedstates/3.txt";      
+        println("loading state 3");
+        filename = "/Users/nolanlem/Documents/kura/CollectiveRhythmsToolbox/CoupledOscillators/savedstates/3.txt";
       }
       if(bar.hover()== 3){
-        println("state 4");
-         filename = "savedstates/4.txt";        
+        println("loading state 4");
+         //filename = "savedstates/4.txt";  
+         filename = "/Users/nolanlem/Documents/kura/CollectiveRhythmsToolbox/CoupledOscillators/savedstates/4.txt";
+         
       }
       if(bar.hover()== 4){
-        println("state 5");
-         filename = "savedstates/5.txt";        
-      }
+        println("loading state 5");
+         //filename = "savedstates/5.txt";        
+         filename = "/Users/nolanlem/Documents/kura/CollectiveRhythmsToolbox/CoupledOscillators/savedstates/5.txt";
+
+    }
       if(bar.hover()== 5){
-        println("state 6");
-         filename = "savedstates/6.txt";        
-      }
+        println("loading state 6");
+         //filename = "savedstates/6.txt";        
+         filename = "/Users/nolanlem/Documents/kura/CollectiveRhythmsToolbox/CoupledOscillators/savedstates/6.txt";
+
+    }
       if(bar.hover()== 6){
-        println("state 7");
-         filename = "savedstates/7.txt";        
-      }
+        //println("loading state 7");
+         // filename = "savedstates/7.txt";        
+         filename = "/Users/nolanlem/Documents/kura/CollectiveRhythmsToolbox/CoupledOscillators/savedstates/7.txt";
+
+    }
       
       loadTxtFile(filename);
     }
@@ -549,8 +560,8 @@ void writeTxtFile(){
   
   
   for(int i = 0; i< o.size(); i++){
-    output.println("osc" + str(i) + "kn," + o.get(i).kn);
-    output.println("osc" + str(i) + "w," + o.get(i).w);  
+    output.print("osc" + str(i) + "kn," + o.get(i).kn);
+    output.println(",osc" + str(i) + "w," + o.get(i).w);  
   }
 
   //output.println(""); 
@@ -567,13 +578,15 @@ void writeTxtFile(){
 }
 
 void loadTxtFile(String thetxtfile){
- String[] lines = loadStrings(thetxtfile);
  println("Reading " + thetxtfile + " params");
- println(lines); 
+
+ String[] lines = loadStrings(thetxtfile);
+
+ println(lines.length); 
  println("there are " + lines.length + " lines");
  String[] n = split(lines[0], ','); 
  println(n[0] + " " + int(n[1])); 
- N = int(n[1]); 
+ int Ntxt = int(n[1]); 
  String[] eff = split(lines[1], ','); 
  println(eff[0] + " " + float(eff[1])); 
  freq_e = float(eff[1]); 
@@ -581,17 +594,44 @@ void loadTxtFile(String thetxtfile){
  println(efa[0] + " " + float(efa[1])); 
  cff = float(efa[1]); 
  
+ // remove all oscillators 
+ for(int i = N-1; i >= 0; i--){
+   println(i);
+  o.remove(i);
+ }
+ N = 0; 
  
+ // add in N oscillators from txt file 
+ for(int i = 0; i < Ntxt; i++){
 
+     o.add(new Oscillator(new PVector(x + (N%grid)*(radius+off), 
+       y + (floor(N/grid))*(radius+off)), 
+       random(0, TWO_PI), 
+       coupling, 
+       init_freq/9.5, 
+       wwidth/radius,
+       metricmod[0],
+       N,
+       colors[int(random(colors.length))])
+       );   
+       N += 1;
+
+       println("adding oscillator, N=" + N + " oscillators");
+ }
+
+ // update the coupling coeff (kn) and intrinsic freq (w) according to txt file 
  int idx = 0; 
  for(String line : lines){
-   if (idx > 3) {
+   if (idx > 2) {
    String[] l = split(line, ',');
-   println(l[0]+ " " + float(l[1]));
-    //o.get(idx).w = float(l[0]);
-    //o.get(idx).kn = float(l[1]);
-    //print(o[idx].w + " " + o[idx].kn);
-
+   println(l[0]+ ": " + float(l[1]) + " " + l[2] + ": " + float(l[3]));
+   println(idx-3); // idx should account for first 3 lines of global system params in txt file 
+   o.get(idx-3).kn = float(l[1]);
+   o.get(idx-3).w = float(l[3]);
+   
+   // update coupling strength matrix 
+   float cmap = map(float(l[1]), -0.02, 0.1, 235, 15); 
+   btns_kn[idx-3].setColorBackground(color(240, int(cmap),int(cmap)));
    }
    idx += 1; 
  }
