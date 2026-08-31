@@ -5,12 +5,13 @@
 
 # Table of Contents 
 1. [About](#about)
-2. [Dependencies](#dependencies)
-3. [Audio Client](#audio-client) 
-4. [Examples](#examples)
-5. [About Coupled Oscillator Models](#generative-models)
-6. [Keystrokes Guide](#keystrokes)
-7. [UI Guide](#ui-guide)
+2. [Sketches in this Repository](#sketches)
+3. [Dependencies](#dependencies)
+4. [Audio Client](#audio-client) 
+5. [Examples](#examples)
+6. [About Coupled Oscillator Models](#generative-models)
+7. [Keystrokes Guide](#keystrokes)
+8. [UI Guide](#ui-guide)
 
 <img width="1300" alt="interface" src="https://user-images.githubusercontent.com/1406597/217840181-bf26a3b2-8121-49c1-9295-4aa0f92c0178.png">
 
@@ -24,13 +25,36 @@ Similarly, several real-time analysis techniques provide the user with visual in
 As such, different extant techniques used in computer music and contemporary composition can be carried out by parameterizing the system in specific ways 
 which are explored from the perspective of dynamical systems based approaches.
 
+## Sketches in this Repository <a name ="sketches"></a>
+
+This repository contains two generations of each model. The `coupled_osc` and `metronomes` sketches are the current versions and are where new work happens; `CoupledOscillators` and `CoupledMetronomes` are the original 2022-2023 implementations, kept as reference.
+
+| Sketch | Model | Status |
+| --- | --- | --- |
+| `coupled_osc/` | Coupled oscillators (Kuramoto / pulse) | **Current** |
+| `metronomes/` | Coupled metronomes (Pantaleone) | **Current** |
+| `CoupledOscillators/` | Coupled oscillators (Kuramoto / pulse) | Original, reference |
+| `CoupledMetronomes/` | Coupled metronomes (Pantaleone) | Original, reference |
+
+### What is new in `coupled_osc`
+
+Beyond a general cleanup of the original sketch, `coupled_osc` adds two features:
+
+**Trigger points.** In the original, each oscillator fired a single onset at its zero crossing. Each oscillator now carries a list of trigger points (`TriggerPoint.pde`) placed anywhere on its rim, and fires whenever its phase sweeps past an active one, in either direction. Click an oscillator's ring to add a trigger point, drag it to move it, and click it to toggle it on or off. This makes it possible to get several onsets per cycle, at arbitrary phase offsets, per oscillator.
+
+**Direct selection in the main window.** Oscillators can be selected by clicking them, or by dragging across a group of them to paint a selection; shift-clicking selects everything sharing that oscillator's group. Selected oscillators are drawn with a green ring. The toggle matrix in the control window still works and stays in sync. Save-state paths are also relative now rather than absolute, so the sketch runs from any location.
+
+### What is new in `metronomes`
+
+`metronomes` is a cleanup of `CoupledMetronomes` with the same feature set and behaviour: same physics parameters, same OSC output, same save states, same phase-coherence graph. Dead code and commented-out experiments were removed, and OSC messages are only sent on frames where at least one metronome actually triggered.
+
 ## Dependencies <a name ="dependencies"></a>
 CRT is written in [Processing](https://processing.org) and requires the [OSCP5](https://sojamo.de/libraries/oscP5/) and [controlP5](https://sojamo.de/libraries/controlP5/) external libraries. 
 
 
 ### Audio Client <a name ="audio-client"></a>
 
-The CoupledOscillator.pde and CoupledMetronomes.pde scripts send out OSC messages in the form of audio events. These must be handled by a separate audio client (SuperCollider, Max/MSP, Ableton, etc.) in order to create sound. This repository comes with an example patch in SuperCollider (receive-oscs.scd) that recreates the basic metronome tick/tock sound with the attached woodblock sample. This was done so that users would have more control over the sound events that the dynamical systems generate and allows software more suitable for sound design to handle audio synthesis. 
+All four sketches send out OSC messages in the form of audio events. These must be handled by a separate audio client (SuperCollider, Max/MSP, Ableton, etc.) in order to create sound. This repository comes with an example patch in SuperCollider (`CoupledOscillators/receive-oscs.scd`) that turns each event into a sample playback. Two sample players are defined: `\playsamp` for mono files such as the included woodblock, and `\playsampstereo` for stereo files such as the included chirp; change `samplePath` and the `Synth` call in the `OSCdef` to switch between them. This was done so that users would have more control over the sound events that the dynamical systems generate and allows software more suitable for sound design to handle audio synthesis. 
 
 
 ## EXAMPLES <a name="examples"></a>

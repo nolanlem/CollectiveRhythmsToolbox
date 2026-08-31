@@ -185,8 +185,8 @@ public void setup() {
       //println("hello ", bar.hover());
       String filename = "";
       if(bar.hover() == 0){
-        println("state 1");
-         //filename = "savedstates/1.txt";
+        println("loading state 1");
+         //filename = "/dir/to/path/savedstates/1.txt";
          filename = "/Users/nolanlem/Documents/kura/CollectiveRhythmsToolbox/CoupledOscillators/savedstates/1.txt";
       }
       if(bar.hover() == 1){

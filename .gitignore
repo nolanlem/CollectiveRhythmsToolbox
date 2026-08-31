@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+__MACOSX/
+._*
+
+# Processing build output
+*/applet/
+*/application.*/

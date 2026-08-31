@@ -5,15 +5,30 @@ Server.default = Server.internal;*/
 // boot the server!!!!
 s.boot;
 
+( // if necessary, increase server memory
+s.options.sampleRate = 44100;
+s.latency = 0.05;
+s.options.memSize = 2.pow(21);
+//"SC_JACK_DEFAULT_OUTPUTS".setenv("BinauralRenderer");
+s.options.numBuffers = 1024;
+
+)
 // RUN THIS CODE BLOCK (cmd+enter)
 (
+
 // example woodblock sample
-var samplePath = thisProcess.nowExecutingPath.dirname +/+ "samples/woodblock_mono.wav";
+var samplePath = thisProcess.nowExecutingPath.dirname +/+ "samples/chirp.wav";
 
 SynthDef(\playsamp, {| out = 0, bufnum = 0, rate = 1.0, vol= 0.2 |
 	Out.ar(out,
 		FreeVerb.ar(
 			[(vol)*PlayBuf.ar(1, bufnum, BufRateScale.kr(bufnum)*rate, doneAction: Done.freeSelf),(vol)*PlayBuf.ar(1, bufnum, BufRateScale.kr(bufnum)*rate, doneAction: Done.freeSelf)]));
+}).add;
+
+SynthDef(\playsampstereo, {| out = 0, bufnum = 0, rate = 1.0, vol= 0.2 |
+	Out.ar(out,
+		FreeVerb.ar(
+			(vol)*PlayBuf.ar(2, bufnum, BufRateScale.kr(bufnum)*rate, doneAction: Done.freeSelf)));
 }).add;
 
 // read soundfile into buffer ~b
@@ -34,7 +49,9 @@ OSCdef(\receiver, {|msg|
 		//var sc;
 		//sc = 1/~numoscs;
 		if(msg[i] == 1, {
-		  Synth(\playsamp,[\rate, ~samplerates[i], \out, 0, \bufnum, ~b]);
+		  //Synth(\playsamp,[\rate, ~samplerates[i], \out, 0, \bufnum, ~b]);
+
+		  Synth(\playsampstereo,[\rate, ~samplerates[i], \out, 0, \bufnum, ~b]);
 		});
 	});
 	//"received trigger!".postln;
